@@ -1,0 +1,24 @@
+FROM node:10-stretch-slim
+
+# laravel mix dependencies
+#RUN apt update && apt install -y \
+#	libpng-dev \
+#	make
+
+# add global dependency
+#RUN npm install -g grunt
+
+# we need to add a user as with PHP
+# but it needs to be the first UID
+# so have to remove the node user for compatibility
+RUN mkdir /home/wh \
+	&& userdel node \
+	&& useradd --shell /bin/bash --uid 1000 wh \
+	&& chown -R wh:wh /home/wh
+
+USER wh
+
+# https://blog.npmjs.org/post/141702881055/package-install-scripts-vulnerability
+RUN npm config set ignore-scripts true
+
+WORKDIR /home/wh
