@@ -19,6 +19,7 @@ RUN mkdir /home/wh \
 USER wh
 
 # https://blog.npmjs.org/post/141702881055/package-install-scripts-vulnerability
-RUN npm config set ignore-scripts true
+# it would be nice to do this but it breaks a lot of use cases
+# RUN npm config set ignore-scripts true
 
 WORKDIR /home/wh
