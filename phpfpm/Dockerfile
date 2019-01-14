@@ -90,3 +90,6 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 RUN mkdir /home/wh && useradd wh --shell /bin/bash && chown -R wh:wh /home/wh
 USER wh
 WORKDIR /home/wh
+
+# handy plugin see https://github.com/hirak/prestissimo
+RUN composer global require hirak/prestissimo
