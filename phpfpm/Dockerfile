@@ -78,13 +78,17 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 #	wget \
 #	&& npm install -g --unsafe-perm chrome-pdf
 
-# I haven't figured out how to add wkhtmltopdf
-# as libjpeg-turbo8 is a dependency we can't satisfy yet :-/
+# how to get wkhtmltopdf
+# - install the fetchable dependencies first and then upgrade with the debs
 #ADD https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb /tmp/
+#ADD http://archive.ubuntu.com/ubuntu/pool/main/libj/libjpeg-turbo/libjpeg-turbo8_1.5.2-0ubuntu5_amd64.deb /tmp/
+#ADD http://archive.ubuntu.com/ubuntu/pool/main/g/glibc/libc6_2.27-3ubuntu1_amd64.deb /tmp/
 #RUN apt update \
-#	&& apt -y install libxrender1 fontconfig xvfb libjpeg62-turbo-dev xfonts-75dpi \
-#	&& dpkg -i /tmp/wkhtmltox_0.12.5-1.bionic_amd64.deb \
-#	&& rm /tmp/wkhtmltox_0.12.5-1.bionic_amd64.deb
+#        && apt -y install libxrender1 fontconfig xvfb xfonts-base xfonts-75dpi xfonts-utils libxfont1 xfonts-encodings \
+#        && dpkg -i /tmp/libjpeg-turbo8_1.5.2-0ubuntu5_amd64.deb \
+#        && dpkg -i /tmp/libc6_2.27-3ubuntu1_amd64.deb \
+#        && dpkg -i /tmp/wkhtmltox_0.12.5-1.bionic_amd64.deb \
+#        && rm /tmp/*.deb
 
 # run things as your main user for ease
 RUN mkdir /home/wh && useradd wh --shell /bin/bash && chown -R wh:wh /home/wh
