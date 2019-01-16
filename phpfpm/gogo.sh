@@ -12,7 +12,6 @@ fi
 docker run -dit --restart always \
 	--name phpfpm \
 	-h phpfpm \
-	-p 9000:9000 \
 	--network=$NETWORKNAME \
 	-v ${HOME}/.aws/credentials:${HOME}/.aws/credentials:ro \
 	-v ${HOME}/gitrepos:${HOME}/gitrepos \
