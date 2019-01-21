@@ -79,16 +79,15 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 #	&& npm install -g --unsafe-perm chrome-pdf
 
 # how to get wkhtmltopdf
-# - install the fetchable dependencies first and then upgrade with the debs
-#ADD https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb /tmp/
+# - do not use 12.5 since you need a higher libc6
+#ADD https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz /tmp/
 #ADD http://archive.ubuntu.com/ubuntu/pool/main/libj/libjpeg-turbo/libjpeg-turbo8_1.5.2-0ubuntu5_amd64.deb /tmp/
-#ADD http://archive.ubuntu.com/ubuntu/pool/main/g/glibc/libc6_2.27-3ubuntu1_amd64.deb /tmp/
 #RUN apt update \
 #        && apt -y install libxrender1 fontconfig xvfb xfonts-base xfonts-75dpi xfonts-utils libxfont1 xfonts-encodings \
-#        && dpkg -i /tmp/libjpeg-turbo8_1.5.2-0ubuntu5_amd64.deb \
-#        && dpkg -i /tmp/libc6_2.27-3ubuntu1_amd64.deb \
-#        && dpkg -i /tmp/wkhtmltox_0.12.5-1.bionic_amd64.deb \
-#        && rm /tmp/*.deb
+#        && cd /tmp/ \	
+#        && dpkg -i libjpeg-turbo8_1.5.2-0ubuntu5_amd64.deb \
+#        && tar xf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz && mv wkhtmltox/bin/* /usr/local/bin/ \
+#        && rm -r *.deb wkhtmlto*
 
 # run things as your main user for ease
 RUN mkdir /home/wh && useradd wh --shell /bin/bash && chown -R wh:wh /home/wh
