@@ -89,6 +89,15 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 #        && tar xf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz && mv wkhtmltox/bin/* /usr/local/bin/ \
 #        && rm -r *.deb wkhtmlto*
 
+# powershell support
+#ADD https://github.com/PowerShell/PowerShell/releases/download/v6.1.2/powershell_6.1.2-1.debian.9_amd64.deb /tmp/
+#ADD http://security.debian.org/debian-security/pool/updates/main/o/openssl/libssl1.0.0_1.0.1t-1+deb8u10_amd64.deb /tmp/
+#RUN apt update \
+#        && apt -y install liblttng-ust0 \
+#        && dpkg -i /tmp/libssl1.0.0_1.0.1t-1+deb8u10_amd64.deb \
+#        && dpkg -i /tmp/powershell_6.1.2-1.debian.9_amd64.deb \
+#        && rm /tmp/*.deb
+
 # run things as your main user for ease
 RUN mkdir /home/wh && useradd wh --shell /bin/bash && chown -R wh:wh /home/wh
 USER wh
