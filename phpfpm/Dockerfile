@@ -79,15 +79,11 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 #	&& npm install -g --unsafe-perm chrome-pdf
 
 # how to get wkhtmltopdf
-# - do not use 12.5 since you need a higher libc6
-#ADD https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz /tmp/
-#ADD http://archive.ubuntu.com/ubuntu/pool/main/libj/libjpeg-turbo/libjpeg-turbo8_1.5.2-0ubuntu5_amd64.deb /tmp/
+#ADD https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.stretch_amd64.deb /tmp/
 #RUN apt update \
-#        && apt -y install libxrender1 fontconfig xvfb xfonts-base xfonts-75dpi xfonts-utils libxfont1 xfonts-encodings \
-#        && cd /tmp/ \	
-#        && dpkg -i libjpeg-turbo8_1.5.2-0ubuntu5_amd64.deb \
-#        && tar xf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz && mv wkhtmltox/bin/* /usr/local/bin/ \
-#        && rm -r *.deb wkhtmlto*
+#        && apt -y install libxrender1 fontconfig xfonts-base xfonts-75dpi libfreetype6 libjpeg62-turbo libpng16-16 libx11-6 libxcb1 libxext6 \
+#        && dpkg -i /tmp/wkhtmltox_0.12.5-1.stretch_amd64.deb \
+#        && rm /tmp/*.deb
 
 # powershell support
 #ADD https://github.com/PowerShell/PowerShell/releases/download/v6.1.2/powershell_6.1.2-1.debian.9_amd64.deb /tmp/
