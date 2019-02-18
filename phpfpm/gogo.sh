@@ -29,4 +29,5 @@ docker run -dit --restart always \
 	-v $SCRIPT_DIR/config/bashrc:${HOME}/.bashrc:ro \
 	-v $SCRIPT_DIR/config/phpfpm.conf:/usr/local/etc/php-fpm.d/www.conf:ro \
 	-v $SCRIPT_DIR/config/phpcli.ini:/usr/local/etc/php/conf.d/zz-custom.ini:ro \
+	-v $SCRIPT_DIR/caches/composer_cache_files:${HOME}/.composer/cache/files \
 	phpfpm71
