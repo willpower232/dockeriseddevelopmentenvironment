@@ -24,9 +24,7 @@ RUN chmod uga+x /usr/local/bin/install-php-extensions && sync
 RUN install-php-extensions bcmath exif gd intl mcrypt mysqli opcache pdo_mysql tidy zip
 
 # composer ftw
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
-	php composer-setup.php && \
-	php -r "unlink('composer-setup.php');" && \
+RUN curl -Ss https://getcomposer.org/installer | php && \
 	mv composer.phar /usr/local/bin/composer
 
 # install node if you want to add node-based binaries
