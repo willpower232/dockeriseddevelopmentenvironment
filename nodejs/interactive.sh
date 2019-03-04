@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONTAINERNAME="nodejs10"
+CONTAINERNAME="nodejs11"
 
 # https://stackoverflow.com/a/4774063
 SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd -P)"

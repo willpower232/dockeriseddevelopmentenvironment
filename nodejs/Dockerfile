@@ -1,4 +1,4 @@
-FROM node:10-stretch-slim
+FROM node:11-alpine
 
 # laravel mix dependencies
 #RUN apt update && apt install -y \
@@ -8,12 +8,14 @@ FROM node:10-stretch-slim
 # add global dependency
 #RUN npm install -g grunt
 
+RUN apk add bash
+
 # we need to add a user as with PHP
 # but it needs to be the first UID
 # so have to remove the node user for compatibility
 RUN mkdir /home/wh \
-	&& userdel node \
-	&& useradd --shell /bin/bash --uid 1000 wh \
+	&& deluser node \
+	&& adduser -h /home/wh -s /bin/bash -D -u 1000 wh \
 	&& chown -R wh:wh /home/wh
 
 USER wh
