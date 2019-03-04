@@ -1,0 +1,15 @@
+# no easy colour support sozlol
+PS1='($SHLVL) \u@\h {\A} [\w]\n$ '
+
+# stop yourself from breaking the server by accident
+alias mv='mv -i'
+alias cp='cp -i'
+alias ln='ln -i'
+alias rm='rm -I --preserve-root'
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
+
+# if you want to hide commands from your bash history with space and don't include duplicates
+# you need this but it may already be set elsewhere
+HISTCONTROL=ignoreboth
