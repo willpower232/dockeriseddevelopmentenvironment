@@ -1,4 +1,4 @@
-# Node JS 10
+# Node JS
 
 ## Interactive
 
