@@ -12,4 +12,4 @@ docker run -dit --restart always \
 	-v ${HOME}/gitrepos:${HOME}/gitrepos \
 	-v $SCRIPT_DIR/config/sites_enabled:/etc/nginx/conf.d:ro \
 	-v $SCRIPT_DIR/config/ssl:/etc/nginx/ssl \
-	nginx:stable
+	nginx:stable-alpine
