@@ -1,5 +1,7 @@
 FROM php:7.1-fpm
 
+LABEL com.centurylinklabs.watchtower.enable="false"
+
 # I don't know if this actually does anything
 RUN ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
 
