@@ -21,6 +21,7 @@ DNSMASQ="$(echo $DNSMASQ)"
 
 docker run -dit --restart always \
 	--name phpfpm \
+	--network-alias phpfpm-docker \
 	-h phpfpm \
 	--network $NETWORKNAME \
 	--dns $DNSMASQ \

@@ -10,6 +10,7 @@ if [ ! "$(docker ps | grep $CONTAINERNAME)" ]; then
 
 	docker run -dit --restart always \
 		--name $CONTAINERNAME \
+		--network-alias $CONTAINERNAME-docker \
 		--network=$NETWORKNAME \
 		-v $SCRIPT_DIR/data:/data \
 		-v /var/run/docker.sock:/var/run/docker.sock \
