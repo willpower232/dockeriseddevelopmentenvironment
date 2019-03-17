@@ -2,7 +2,7 @@
 
 ## Interactive
 
-Provides a Python-enabled terminal to run ansible.
+Provides a Python-enabled terminal to run ansible. Have a look at the Dockerfile before you run it, you may want to include the ssh-keyscan of your servers.
 
 I have an alias in my `.bashrc` along the lines of
 
