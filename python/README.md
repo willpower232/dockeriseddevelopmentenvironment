@@ -7,7 +7,7 @@ Provides a Python-enabled terminal to run ansible. Have a look at the Dockerfile
 I have an alias in my `.bashrc` along the lines of
 
 ```bash
-alias bashnode='bash ~/containers/python/interactive.sh'
+alias bashpython='bash ~/containers/python/interactive.sh'
 ```
 
 ### Root Access
