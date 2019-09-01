@@ -7,7 +7,7 @@ source $SCRIPT_DIR/../networks/php.sh
 
 docker run -dit --restart always \
 	--name mysql \
-	--network-alias mysql-docker
+	--network-alias mysql-docker \
 	-p 3306:3306 \
 	--network $NETWORKNAME \
 	-v $SCRIPT_DIR/data:/var/lib/mysql \
