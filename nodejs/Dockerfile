@@ -1,4 +1,4 @@
-FROM node:11-alpine
+FROM node:12-alpine
 
 # laravel mix dependencies
 #RUN apt update && apt install -y \
