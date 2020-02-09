@@ -1,4 +1,4 @@
-FROM php:7.1-fpm
+FROM php:7.4-fpm
 
 LABEL com.centurylinklabs.watchtower.enable="false"
 
@@ -23,7 +23,7 @@ RUN chmod uga+x /usr/local/bin/install-php-extensions && sync
 # Tidy HTML clean and repair integration
 # ZIP integration
 
-RUN install-php-extensions bcmath exif gd intl mcrypt mysqli opcache pdo_mysql tidy zip
+RUN install-php-extensions bcmath exif gd imagick intl mcrypt mysqli opcache pdo_mysql tidy zip
 
 # composer ftw
 RUN curl -Ss https://getcomposer.org/installer | php && \
