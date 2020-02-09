@@ -8,6 +8,9 @@ FROM node:12-alpine
 # add global dependency
 #RUN npm install -g grunt
 
+# laravel requirement
+#RUN npm install -g cross-env
+
 RUN apk add bash
 
 # we need to add a user as with PHP
