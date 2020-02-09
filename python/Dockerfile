@@ -1,9 +1,4 @@
-#FROM python:3.7-alpine
-#RUN apk add gcc musl-dev make libffi-dev openssl-dev
-#RUN apk add bash
-#	&& adduser -h /home/wh -s /bin/bash -D -u 1000 wh \
-
-# fun fact, slim-stretch with ansible is slightly smaller than alpine with ansible
+# don't use alpine for python images https://pythonspeed.com/articles/alpine-docker-python/
 
 FROM python:3.7-slim-stretch
 
