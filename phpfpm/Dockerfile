@@ -9,7 +9,8 @@ RUN ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
 RUN apt update && apt install -y git zip unzip curl
 
 # easy extension add tool
-ADD https://raw.githubusercontent.com/mlocati/docker-php-extension-installer/master/install-php-extensions /usr/local/bin/
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+#ADD https://raw.githubusercontent.com/mlocati/docker-php-extension-installer/master/install-php-extensions /usr/local/bin/
 RUN chmod uga+x /usr/local/bin/install-php-extensions && sync
 
 # extensions I seem to need all the time:
@@ -28,6 +29,8 @@ RUN install-php-extensions bcmath exif gd imagick intl mcrypt mysqli opcache pdo
 # composer ftw
 RUN curl -Ss https://getcomposer.org/installer | php && \
 	mv composer.phar /usr/local/bin/composer
+
+# install any composer dependencies at the end
 
 # install node if you want to add node-based binaries
 #RUN apt update \
@@ -94,10 +97,13 @@ RUN curl -Ss https://getcomposer.org/installer | php && \
 #        && dpkg -i /tmp/powershell_6.1.2-1.debian.9_amd64.deb \
 #        && rm /tmp/*.deb
 
+RUN pecl install xdebug-3.0.1 \
+    && docker-php-ext-enable xdebug;
+
 # run things as your main user for ease
 RUN mkdir /home/wh && useradd wh --shell /bin/bash && chown -R wh:wh /home/wh
 USER wh
+RUN mkdir -p /home/wh/.composer/cache/{files,repo}
 WORKDIR /home/wh
 
-# handy plugin see https://github.com/hirak/prestissimo
-RUN composer global require hirak/prestissimo
+RUN composer global require ergebnis/composer-normalize
