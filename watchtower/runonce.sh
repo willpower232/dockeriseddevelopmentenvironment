@@ -7,7 +7,7 @@ if [ ! "$(docker ps | grep $CONTAINERNAME)" ]; then
 	# its easier to get watchtower updated before it starts
 	docker pull containrrr/watchtower
 
-	( sleep 30 ; docker stop $CONTAINERNAME ) &
+	# ( sleep 30 ; docker stop $CONTAINERNAME ) &
 
 	docker run --rm -it \
 		--name $CONTAINERNAME \

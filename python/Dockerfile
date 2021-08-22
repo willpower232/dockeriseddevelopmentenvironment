@@ -12,10 +12,10 @@ RUN pip install ansible
 # if you aren't using keyfiles for SSH authentication you will need sshpass
 #RUN apt install -y sshpass
 
-RUN mkdir /home/wh \
-	&& useradd wh --shell /bin/bash \
-	&& chown -R wh:wh /home/wh
+RUN mkdir /home/wp \
+	&& useradd wp --shell /bin/bash \
+	&& chown -R wp:wp /home/wp
 
-USER wh
+USER wp
 
-WORKDIR /home/wh
+WORKDIR /home/wp

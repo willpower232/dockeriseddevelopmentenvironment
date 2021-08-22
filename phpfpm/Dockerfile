@@ -6,7 +6,7 @@ LABEL com.centurylinklabs.watchtower.enable="false"
 RUN ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
 
 # dependencies
-RUN apt update && apt install -y git zip unzip curl
+RUN apt update && apt install -y git zip unzip curl mariadb-client sqlite3
 
 # easy extension add tool
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
@@ -101,9 +101,9 @@ RUN pecl install xdebug-3.0.1 \
     && docker-php-ext-enable xdebug;
 
 # run things as your main user for ease
-RUN mkdir /home/wh && useradd wh --shell /bin/bash && chown -R wh:wh /home/wh
-USER wh
-RUN mkdir -p /home/wh/.composer/cache/{files,repo}
-WORKDIR /home/wh
+RUN mkdir /home/wp && useradd wp --shell /bin/bash && chown -R wp:wp /home/wp
+USER wp
+RUN mkdir -p /home/wp/.composer/cache/{files,repo}
+WORKDIR /home/wp
 
 RUN composer global require ergebnis/composer-normalize

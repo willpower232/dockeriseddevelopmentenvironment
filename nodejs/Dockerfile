@@ -1,4 +1,4 @@
-FROM node:12-alpine
+FROM node:14-alpine
 
 # laravel mix dependencies
 #RUN apt update && apt install -y \
@@ -16,15 +16,15 @@ RUN apk add bash
 # we need to add a user as with PHP
 # but it needs to be the first UID
 # so have to remove the node user for compatibility
-RUN mkdir /home/wh \
+RUN mkdir /home/wp \
 	&& deluser node \
-	&& adduser -h /home/wh -s /bin/bash -D -u 1000 wh \
-	&& chown -R wh:wh /home/wh
+	&& adduser -h /home/wp -s /bin/bash -D -u 1000 wp \
+	&& chown -R wp:wp /home/wp
 
-USER wh
+USER wp
 
 # https://blog.npmjs.org/post/141702881055/package-install-scripts-vulnerability
 # it would be nice to do this but it breaks a lot of use cases
 # RUN npm config set ignore-scripts true
 
-WORKDIR /home/wh
+WORKDIR /home/wp
