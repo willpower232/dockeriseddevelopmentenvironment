@@ -1,6 +1,6 @@
 # don't use alpine for python images https://pythonspeed.com/articles/alpine-docker-python/
 
-FROM python:3.7-slim-stretch
+FROM python:3-slim
 
 RUN pip install ansible
 
