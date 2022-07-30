@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONTAINERNAME="nodejs12"
+CONTAINERNAME="nodejs18"
 
 # https://stackoverflow.com/a/4774063
 SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd -P)"
@@ -19,6 +19,7 @@ if [ ! "$(docker ps | grep $CONTAINERNAME)" ]; then
 		-h $CONTAINERNAME \
 		-v $SCRIPT_DIR/config/bashrc:${HOME}/.bashrc:ro \
 		-v ${HOME}/gitrepos:${HOME}/gitrepos \
+		-v /tmp:/hosttmp \
 		-v $SCRIPT_DIR/caches/npm:${HOME}/.npm \
 		-w "$PWD" \
 		$CONTAINERNAME \
