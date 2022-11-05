@@ -106,4 +106,5 @@ USER wp
 RUN mkdir -p /home/wp/.composer/cache/{files,repo}
 WORKDIR /home/wp
 
-RUN composer global require ergebnis/composer-normalize
+RUN composer global config --no-plugins allow-plugins.ergebnis/composer-normalize true \
+    && composer global require ergebnis/composer-normalize
