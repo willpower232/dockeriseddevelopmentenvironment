@@ -19,6 +19,7 @@ if [ ! "$(docker ps | grep $CONTAINERNAME)" ]; then
 		-h $CONTAINERNAME \
 		-v $SCRIPT_DIR/config/bashrc:${HOME}/.bashrc:ro \
 		-v ${HOME}/gitrepos:${HOME}/gitrepos \
+		-v ${HOME}/.ssh:${HOME}/.ssh \
 		-w "$PWD" \
 		$CONTAINERNAME \
 		bash
