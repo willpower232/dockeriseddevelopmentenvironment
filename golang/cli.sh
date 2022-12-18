@@ -2,8 +2,8 @@
 
 CONTAINERNAME="golang1"
 
-# https://stackoverflow.com/a/4774063
-SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd -P)"
+# this has to be hardcoded because this file needs symlinking to the $PATH
+SCRIPT_DIR="/home/wp/containers/golang"
 
 if [[ "$(docker images -q $CONTAINERNAME:latest 2> /dev/null)" == "" ]]; then
 	docker build -t $CONTAINERNAME $SCRIPT_DIR
