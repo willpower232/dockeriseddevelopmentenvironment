@@ -10,6 +10,9 @@ if [[ "$(docker images -q $CONTAINERNAME:latest 2> /dev/null)" == "" ]]; then
 fi
 
 docker run -i --rm \
+	-e NAMECHEAP_KEY \
+	-e NAMECHEAP_USER \
+	-e NAMECHEAP_DOMAIN \
 	-h $CONTAINERNAME \
 	-v $SCRIPT_DIR/config/bashrc:${HOME}/.bashrc:ro \
 	-v ${HOME}/gitrepos:${HOME}/gitrepos \
