@@ -10,7 +10,6 @@ if [[ "$(docker images -q $CONTAINERNAME:latest 2> /dev/null)" == "" ]]; then
 fi
 
 docker run -i --rm \
-	--name $CONTAINERNAME \
 	-h $CONTAINERNAME \
 	-v $SCRIPT_DIR/config/bashrc:${HOME}/.bashrc:ro \
 	-v ${HOME}/gitrepos:${HOME}/gitrepos \
