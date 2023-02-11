@@ -16,7 +16,5 @@ USER wp
 
 WORKDIR /home/wp
 
-RUN mkdir go && mkdir -p .cache/go-build
-
-VOLUME [ "/home/wp/go" ]
-VOLUME [ "/home/wp/.cache/go-build" ]
+RUN mkdir go
+ENV GOPATH=/home/wp/go
