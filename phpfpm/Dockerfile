@@ -1,4 +1,4 @@
-FROM php:7.4-fpm
+FROM php:8.2-fpm
 
 LABEL com.centurylinklabs.watchtower.enable="false"
 
@@ -24,11 +24,11 @@ RUN chmod uga+x /usr/local/bin/install-php-extensions && sync
 # Tidy HTML clean and repair integration
 # ZIP integration
 
-RUN install-php-extensions bcmath exif gd imagick intl mcrypt mysqli opcache pdo_mysql tidy zip
+RUN install-php-extensions bcmath exif gd imagick intl mysqli opcache pdo_mysql tidy zip
 
 # composer ftw
 RUN curl -Ss https://getcomposer.org/installer | php && \
-	mv composer.phar /usr/local/bin/composer
+    mv composer.phar /usr/local/bin/composer
 
 # install any composer dependencies at the end
 
@@ -97,7 +97,7 @@ RUN curl -Ss https://getcomposer.org/installer | php && \
 #        && dpkg -i /tmp/powershell_6.1.2-1.debian.9_amd64.deb \
 #        && rm /tmp/*.deb
 
-RUN pecl install xdebug-3.0.1 \
+RUN pecl install xdebug \
     && docker-php-ext-enable xdebug;
 
 # run things as your main user for ease
@@ -106,5 +106,5 @@ USER wp
 RUN mkdir -p /home/wp/.composer/cache/{files,repo}
 WORKDIR /home/wp
 
-RUN composer global config --no-plugins allow-plugins.ergebnis/composer-normalize true \
+RUN composer config --global --no-plugins allow-plugins.ergebnis/composer-normalize true \
     && composer global require ergebnis/composer-normalize
