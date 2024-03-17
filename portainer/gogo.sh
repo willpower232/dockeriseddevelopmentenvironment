@@ -14,5 +14,5 @@ if [ ! "$(docker ps | grep $CONTAINERNAME)" ]; then
 		--network $NETWORKNAME \
 		-v $SCRIPT_DIR/data:/data \
 		-v /var/run/docker.sock:/var/run/docker.sock \
-		portainer/portainer-ce
+		portainer/portainer-ce:2.18.4
 fi
