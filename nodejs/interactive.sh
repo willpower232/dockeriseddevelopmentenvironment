@@ -17,6 +17,7 @@ if [ ! "$(docker ps | grep $CONTAINERNAME)" ]; then
 	docker run -it --rm \
 		--name $CONTAINERNAME \
 		-h $CONTAINERNAME \
+		-p 5173:5173 \
 		-v $SCRIPT_DIR/config/bashrc:${HOME}/.bashrc:ro \
 		-v ${HOME}/gitrepos:${HOME}/gitrepos \
 		-v /tmp:/hosttmp \
