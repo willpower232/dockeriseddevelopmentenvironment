@@ -13,6 +13,7 @@ docker run -i --rm \
 	-e NAMECHEAP_KEY \
 	-e NAMECHEAP_USER \
 	-e NAMECHEAP_DOMAIN \
+	-e NAMECHEAP_BASEURL \
 	-h $CONTAINERNAME \
 	-v $SCRIPT_DIR/config/bashrc:${HOME}/.bashrc:ro \
 	-v ${HOME}/gitrepos:${HOME}/gitrepos \

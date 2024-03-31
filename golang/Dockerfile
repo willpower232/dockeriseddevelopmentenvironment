@@ -3,11 +3,10 @@
 #RUN apk add bash
 #	&& adduser -h /home/wp -s /bin/bash -D -u 1000 wp \
 
-FROM golang:1.19-bullseye
+FROM golang:1.22-bookworm
 
 # we need to add a user as with PHP
 # but it needs to be the first UID
-# so have to remove the node user for compatibility
 RUN mkdir /home/wp \
 	&& useradd -d /home/wp -s /bin/bash -u 1000 wp \
 	&& chown -R wp:wp /home/wp
